@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PenjualanController;
-use App\Http\Controllers\RestockController;
+use App\Http\Controllers\RestokController;
 
 
 /*
@@ -25,7 +25,7 @@ Auth::routes();
 
             Route::resource('barang', BarangController::class);
             Route::resource('penjualan', PenjualanController::class);
-            Route::resource('restock', RestockController::class);
+            Route::resource('restok', RestokController::class);
 Route::middleware(['auth'])->group(function () {
 
     });

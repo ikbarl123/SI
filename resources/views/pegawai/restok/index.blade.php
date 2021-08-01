@@ -1,12 +1,12 @@
 @extends('layouts.master-pegawai')
-@section('section-header','Data restock')
+@section('section-header','Data restok')
 @section('content-pegawai')
 
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
-                <div class="h3">Daftar restock</div>
+                <div class="h3">Daftar restok</div>
             </div>
             <div class="card-body">
                 @if (@session('pesan'))
@@ -14,17 +14,16 @@
                     <p>{{ session('pesan') }}</p>
                 </div>
                 @endif
-                <a href="{{route('restock.create')}}" class="btn btn-primary float-right">Tambah restock</a>
+                <a href="{{route('restok.create')}}" class="btn btn-primary float-right">Tambah restok</a>
                 <div class="table-responsive">
                     <table class="table table-striped dataTable no-footer" id="table-1">
                         <thead>
                             <tr role="row">
                                 <th>No</th>
-                                <th>Kode restock</th>
+                                <th>Kode restok</th>
                                 <th>Nama Barang</th>
                                 <th>Nama Supplier</th>
                                 <th>Tanggal</th>
-                                <th>Status</th>
                                 <th>Total Pembayaran</th>
                                 <th>Jumlah</th>
                                 <th>by</th>
@@ -32,22 +31,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                             @foreach($restocks as $value)
+                             @foreach($restoks as $value)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$value->id_restock}}</td>
+                                <td>{{$value->id_restok}}</td>
                                 <td>{{$value->id_barang}}</td>
                                 <td>{{$value->nama_supplier}}</td>
                                 <td>{{$value->tanggal}}</td>
-                                <td>{{$value->status}}</td>
                                 <td>Rp {{number_format($value->harga,0,'','.')}}</td>
                                 <td>{{$value->jumlah}}</td>
                                 <td>{{$value->username}}</td>
                                 <td>
                                     <div class="row">
-                                        <a href="{{route('restock.edit',$value->id_restock)}}"
+                                        <a href="{{route('restok.edit',$value->id_restok)}}"
                                             class="btn btn-info btn-icon mr-1"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="{{route('restock.destroy',$value->id_restock)}}" method="post">
+                                        <form action="{{route('restok.destroy',$value->id_restok)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

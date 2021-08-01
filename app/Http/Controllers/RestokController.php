@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\restock;
+use App\Models\restok;
 use Illuminate\Http\Request;
 
-class RestockController extends Controller
+class restokController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class RestockController extends Controller
      */
     public function index()
     {
-        $restocks = restock::all();
-        return view('pegawai.restock.index',compact('restocks'));
+        $restoks = restok::all();
+        return view('pegawai.restok.index',compact('restoks'));
     }
 
     /**
@@ -25,7 +25,7 @@ class RestockController extends Controller
      */
     public function create()
     {
-        //
+        return view('pegawai.restok.form');
     }
 
     /**
@@ -36,16 +36,25 @@ class RestockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       restok::create([
+            'id_restok'=>$request->id_restok,
+            'id_barang'=>$request->id_barang,
+            'nama_supplier'=>$request->nama_supplier,
+            'tanggal'=>$request->tanggal,
+            'total_pembayaran'=>$request->total_pembayaran,
+            'jumlah'=>$request->jumlah,
+            'username'=>$request->username,
+        ]);
+        return redirect()->route('restok.index')->with('pesan','Data restok Berhasil DiTambahkan'); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\restock  $restock
+     * @param  \App\Models\restok  $restok
      * @return \Illuminate\Http\Response
      */
-    public function show(restock $restock)
+    public function show(restok $restok)
     {
         //
     }
@@ -53,10 +62,10 @@ class RestockController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\restock  $restock
+     * @param  \App\Models\restok  $restok
      * @return \Illuminate\Http\Response
      */
-    public function edit(restock $restock)
+    public function edit(restok $restok)
     {
         //
     }
@@ -65,10 +74,10 @@ class RestockController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\restock  $restock
+     * @param  \App\Models\restok  $restok
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, restock $restock)
+    public function update(Request $request, restok $restok)
     {
         //
     }
@@ -76,10 +85,10 @@ class RestockController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\restock  $restock
+     * @param  \App\Models\restok  $restok
      * @return \Illuminate\Http\Response
      */
-    public function destroy(restock $restock)
+    public function destroy(restok $restok)
     {
         //
     }

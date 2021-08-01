@@ -1,5 +1,5 @@
 @extends('layouts.master-pegawai')
-@section('section-header','Data restock')
+@section('section-header','Data Restok')
 @section('content-pegawai')
 
 <div class="card">
@@ -12,12 +12,12 @@
                 <!-- <h5 class="card-title">Special title treatment</h5> -->
                 <div class="row">
                     <div class="col-md-12">
-                    <form method="POST" action="{{route('restock.store')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('restok.store')}}" enctype="multipart/form-data">
                     @csrf
                        <div class="form-group">
-                            <label>Kode restock</label>
-                            <input type="text" name="id_restock" class="form-control" id="formGroupExampleInput" >
-                            @error('id_restock')
+                            <label>Kode restok</label>
+                            <input type="text" name="id_restok" class="form-control" id="formGroupExampleInput" >
+                            @error('id_restok')
                                 <h6 class="text-danger">{{ $message }}</h6>
                             @enderror
                         </div>
@@ -42,7 +42,7 @@
                                 <h6 class="text-danger">{{ $message }}</h6>
                             @enderror
                         </div>
-                        
+
                         
 
                         <div class="form-row">
@@ -60,11 +60,11 @@
                             <label>Jumlah</label>
                             <input type="number" name="jumlah" class="form-control" id="inlineFormInputGroup" min="1">
                         </div>
-                        <!-- <div class="form-group">
-                            <label>Foto</label>
-                            <input type="file" name="foto" class="form-control" id="inlineFormInputGroup" >
-                        </div> -->
-
+                        <div class="form-group">
+                            <label>Di isi Oleh</label>
+                            <input type="text" name="username" value="{{Auth::user()->username}}" class="form-control" id="inlineFormInputGroup" readonly>
+                        </div>
+                        
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                     </div>
