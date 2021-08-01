@@ -35,10 +35,10 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$value->id_restok}}</td>
-                                <td>{{$value->id_barang}}</td>
+                                <td>{{$value->barang['nama_barang']}}</td>
                                 <td>{{$value->nama_supplier}}</td>
                                 <td>{{$value->tanggal}}</td>
-                                <td>Rp {{number_format($value->harga,0,'','.')}}</td>
+                                <td>Rp {{number_format($value->total_pembayaran,0,'','.')}}</td>
                                 <td>{{$value->jumlah}}</td>
                                 <td>{{$value->username}}</td>
                                 <td>

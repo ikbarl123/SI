@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nama barang</label>
-                            <input type="text" name="nama_barang" value="{{$barang->nama_barang}}" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+                            <input type="text" name="nama_barang" value="{{$barang->nama_barang}}" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder" readonly>
                             @error('nama_barang')
                                 <h6 class="text-danger">{{ $message }}</h6>
                             @enderror

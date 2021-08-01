@@ -22,8 +22,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label>Kode Barang</label>
-                            <input type="text" name="id_barang" class="form-control" id="formGroupExampleInput" >
+                            <label>Barang</label>
+                                            <select class="form-control" name="id_barang">
+                                                <option value=""> - Pilih barang</option>
+                                                @foreach ($barang as $barang)
+                                                    <option value="{{$barang->id_barang}}"> {{$barang->nama_barang}}</option>
+                                                @endforeach 
+                                            </select>
                             @error('id_barang')
                                 <h6 class="text-danger">{{ $message }}</h6>
                             @enderror

@@ -38,7 +38,7 @@ class BarangController extends Controller
     {
         Barang::create([
             'id_barang'=>$request->id_barang,
-            'nama_menu'=>$request->nama_barang,
+            'nama_barang'=>$request->nama_barang,
             'harga'=>$request->harga,
             'stok'=>$request->stok,
         ]);

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class barang extends Model
 {
@@ -21,10 +22,10 @@ class barang extends Model
 
 
 
-    public function kurangiStok($id,$jumlah){
-        $stok = DB::table('barang')->where('id_barang',$id)->decrement('stok',$jumlah);
+    public function kurangiStok($id_barang,$jumlah){
+        $stok = DB::table('barang')->where('id_barang',$id_barang)->decrement('stok',$jumlah);
     }
-        public function tambahStok($id,$jumlah){
-        $stok = DB::table('barang')->where('id_barang',$id)->increment('stok',$jumlah);
+        public function tambahStok($id_barang,$jumlah){
+        $stok = DB::table('barang')->where('id_barang',$id_barang)->increment('stok',$jumlah);
     }
 }

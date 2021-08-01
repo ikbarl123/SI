@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\restok;
+use App\Models\barang;
 use Illuminate\Http\Request;
+
 
 class restokController extends Controller
 {
@@ -25,7 +27,8 @@ class restokController extends Controller
      */
     public function create()
     {
-        return view('pegawai.restok.form');
+        $barang=barang::all();
+        return view('pegawai.restok.form',compact('barang'));
     }
 
     /**
@@ -45,6 +48,8 @@ class restokController extends Controller
             'jumlah'=>$request->jumlah,
             'username'=>$request->username,
         ]);
+        $barang= new barang();
+        $barang->tambahStok($request->id_barang,$request->jumlah);
         return redirect()->route('restok.index')->with('pesan','Data restok Berhasil DiTambahkan'); 
     }
 
@@ -67,7 +72,8 @@ class restokController extends Controller
      */
     public function edit(restok $restok)
     {
-        //
+        $barang=barang::all();
+        return view('pegawai.restok.edit',compact('restok','barang'));
     }
 
     /**
@@ -79,7 +85,19 @@ class restokController extends Controller
      */
     public function update(Request $request, restok $restok)
     {
-        //
+        $barang= new barang();
+        $barang->kurangiStok($restok->id_barang,$restok->jumlah);
+        $update= new barang();
+        $update->tambahStok($request->id_barang,$request->jumlah);
+        restok::where('id_restok',$restok->id_restok)
+        ->update([
+            'nama_supplier'=>$request->nama_supplier,
+            'tanggal'=>$request->tanggal,
+            'total_pembayaran'=>$request->total_pembayaran,
+            'jumlah'=>$request->jumlah,
+        ]);
+        
+        return redirect()->route('restok.index')->with('pesan','Data Restok Berhasil DiUbah');
     }
 
     /**
@@ -90,6 +108,9 @@ class restokController extends Controller
      */
     public function destroy(restok $restok)
     {
-        //
+                 $barang= new barang();
+                 $barang->kurangiStok($restok->id_barang,$restok->jumlah);
+                 $restok->delete();
+        return redirect()->route('restok.index')->with('pesan','restok Berhasil DiHapus');
     }
 }

@@ -22,4 +22,9 @@ class restok extends Model
             'jumlah',
             'username',
     ];
+
+        public function barang()
+    {
+        return $this->belongsTo(Barang::class,'id_barang','id_barang');
+    }
 }
