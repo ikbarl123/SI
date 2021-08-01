@@ -14,7 +14,8 @@ class RestockController extends Controller
      */
     public function index()
     {
-        //
+        $restocks = restock::all();
+        return view('pegawai.restock.index',compact('restocks'));
     }
 
     /**

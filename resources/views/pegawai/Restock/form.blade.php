@@ -1,5 +1,5 @@
 @extends('layouts.master-pegawai')
-@section('section-header','Data barang')
+@section('section-header','Data restock')
 @section('content-pegawai')
 
 <div class="card">
@@ -12,40 +12,53 @@
                 <!-- <h5 class="card-title">Special title treatment</h5> -->
                 <div class="row">
                     <div class="col-md-12">
-                    <form method="POST" action="{{route('barang.store')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('restock.store')}}" enctype="multipart/form-data">
                     @csrf
                        <div class="form-group">
-                            <label>Kode barang</label>
+                            <label>Kode restock</label>
+                            <input type="text" name="id_restock" class="form-control" id="formGroupExampleInput" >
+                            @error('id_restock')
+                                <h6 class="text-danger">{{ $message }}</h6>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Kode Barang</label>
                             <input type="text" name="id_barang" class="form-control" id="formGroupExampleInput" >
                             @error('id_barang')
                                 <h6 class="text-danger">{{ $message }}</h6>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label>Nama barang</label>
-                            <input type="text" name="nama_barang" class="form-control" id="formGroupExampleInput" >
-                            @error('nama_barang')
+                            <label>Nama Supplier</label>
+                            <input type="text" name="nama_supplier" class="form-control" id="formGroupExampleInput" >
+                            @error('nama_supplier')
                                 <h6 class="text-danger">{{ $message }}</h6>
                             @enderror
                         </div>
-              <!--         <div class="form-group">
-                            <label>Satuan</label>
-                            <input type="text" name="satuan" id="satuan" class="form-control" id="inlineFormInputGroup">
-                        </div>-->
+                        <div class="form-group">
+                            <label>Tanggal</label>
+                            <input type="date" name="tanggal" class="form-control" id="formGroupExampleInput" >
+                            @error('tanggal')
+                                <h6 class="text-danger">{{ $message }}</h6>
+                            @enderror
+                        </div>
+                        
+                        
+
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Harga</label>
+                                <label>Total Pembayaran</label>
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Rp</div>
                                     </div>
-                                    <input type="number" name="harga" class="form-control" id="inlineFormInputGroup">
+                                    <input type="number" name="total_pembayaran" class="form-control" id="inlineFormInputGroup">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Stok</label>
-                            <input type="number" name="stok" class="form-control" id="inlineFormInputGroup" min="1">
+                            <label>Jumlah</label>
+                            <input type="number" name="jumlah" class="form-control" id="inlineFormInputGroup" min="1">
                         </div>
                         <!-- <div class="form-group">
                             <label>Foto</label>
