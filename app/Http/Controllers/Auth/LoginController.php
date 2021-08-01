@@ -35,14 +35,7 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
-        $role = auth()->user()->role;
-        if($role == "koki"){
-            return route('koki.index');
-        }else if($role == 'kasir'){
-            return route('kasir.index');
-        }else if($role == "pelayan"){
-            return route('pelayan.index');
-        }
+
         // return route('dashboard.pegawai');
     }
     public function username()

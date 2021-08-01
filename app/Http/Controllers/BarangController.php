@@ -14,7 +14,8 @@ class BarangController extends Controller
      */
     public function index()
     {
-        //
+        $barangs = Barang::all();
+        return view('pegawai.barang.index',compact('barangs'));
     }
 
     /**
@@ -24,7 +25,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('pegawai.barang.form');
     }
 
     /**
@@ -35,7 +36,13 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Barang::create([
+            'id_barang'=>$request->id_barang,
+            'nama_menu'=>$request->nama_barang,
+            'harga'=>$request->harga,
+            'stok'=>$request->stok,
+        ]);
+        return redirect()->route('barang.index')->with('pesan','Barang Berhasil DiTambahkan');
     }
 
     /**
@@ -57,7 +64,8 @@ class BarangController extends Controller
      */
     public function edit(barang $barang)
     {
-        //
+        return view('pegawai.barang.edit',compact('barang'));
+       
     }
 
     /**
@@ -69,7 +77,13 @@ class BarangController extends Controller
      */
     public function update(Request $request, barang $barang)
     {
-        //
+         Barang::where('id_barang',$barang->id_barang)
+        ->update([
+            'nama_barang'=>$request->nama_barang,
+            'harga'=>$request->harga,
+            'stok'=>$request->stok,
+        ]);
+        return redirect()->route('barang.index')->with('pesan','Barang Berhasil DiUbah');
     }
 
     /**
@@ -80,6 +94,7 @@ class BarangController extends Controller
      */
     public function destroy(barang $barang)
     {
-        //
+         $barang->delete();
+        return redirect()->route('barang.index')->with('pesan','barang Berhasil DiHapus');
     }
 }
