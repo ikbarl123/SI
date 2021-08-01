@@ -1,5 +1,5 @@
 @extends('layouts.master-pegawai')
-@section('section-header','Data Menu')
+@section('section-header','Data barang')
 @section('content-pegawai')
 
 <div class="card">
@@ -12,13 +12,19 @@
                 <!-- <h5 class="card-title">Special title treatment</h5> -->
                 <div class="row">
                     <div class="col-md-12">
-                    <form method="POST" action="{{route('menu.store')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('barang.store')}}" enctype="multipart/form-data">
                     @csrf
-                       
+                       <div class="form-group">
+                            <label>Kode barang</label>
+                            <input type="text" name="id_barang" class="form-control" id="formGroupExampleInput" >
+                            @error('id_barang')
+                                <h6 class="text-danger">{{ $message }}</h6>
+                            @enderror
+                        </div>
                         <div class="form-group">
-                            <label>Nama Menu</label>
-                            <input type="text" name="nama_menu" class="form-control" id="formGroupExampleInput" >
-                            @error('nama_menu')
+                            <label>Nama barang</label>
+                            <input type="text" name="nama_barang" class="form-control" id="formGroupExampleInput" >
+                            @error('nama_barang')
                                 <h6 class="text-danger">{{ $message }}</h6>
                             @enderror
                         </div>

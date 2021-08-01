@@ -1,12 +1,12 @@
 @extends('layouts.master-pegawai')
-@section('section-header','Data Menu')
+@section('section-header','Data barang')
 @section('content-pegawai')
 
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
-                <div class="h3">Daftar Menu</div>
+                <div class="h3">Daftar barang</div>
             </div>
             <div class="card-body">
                 @if (@session('pesan'))
@@ -14,30 +14,32 @@
                     <p>{{ session('pesan') }}</p>
                 </div>
                 @endif
-                <a href="{{route('menu.create')}}" class="btn btn-primary float-right">Tambah Menu</a>
+                <a href="{{route('barang.create')}}" class="btn btn-primary float-right">Tambah barang</a>
                 <div class="table-responsive">
                     <table class="table table-striped dataTable no-footer" id="table-1">
                         <thead>
                             <tr role="row">
                                 <th>No</th>
-                                <th>Nama Menu</th>
+                                <th>Kode Barang</th>
+                                <th>Nama barang</th>
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                             @foreach($menus as $value)
+                             @foreach($barangs as $value)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$value->nama_menu}}</td>
-                                <td>Rp {{number_format($value->harga_menu,0,'','.')}}</td>
+                                <td>{{$value->id_barang}}</td>
+                                <td>{{$value->nama_barang}}</td>
+                                <td>Rp {{number_format($value->harga,0,'','.')}}</td>
                                 <td>{{$value->stok}}</td>
                                 <td>
                                     <div class="row">
-                                        <a href="{{route('menu.edit',$value->id_menu)}}"
+                                        <a href="{{route('barang.edit',$value->id_barang)}}"
                                             class="btn btn-info btn-icon mr-1"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="{{route('menu.destroy',$value->id_menu)}}" method="post">
+                                        <form action="{{route('barang.destroy',$value->id_barang)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
