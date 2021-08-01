@@ -24,4 +24,7 @@ class barang extends Model
     public function kurangiStok($id,$jumlah){
         $stok = DB::table('barang')->where('id_barang',$id)->decrement('stok',$jumlah);
     }
+        public function tambahStok($id,$jumlah){
+        $stok = DB::table('barang')->where('id_barang',$id)->increment('stok',$jumlah);
+    }
 }
