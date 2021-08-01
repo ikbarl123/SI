@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\penjualan;
+use App\Models\barang;
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
@@ -14,7 +15,8 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        //
+                $penjualans =penjualan::all();
+        return view('pegawai.penjualan.index',compact('penjualans'));
     }
 
     /**
@@ -24,7 +26,8 @@ class PenjualanController extends Controller
      */
     public function create()
     {
-        //
+        $barang= barang::all();
+        return view('pegawai.penjualan.form',compact('barang'));
     }
 
     /**
@@ -35,7 +38,14 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $penjualan= penjualan::create($request->all());
+        $barangs=$request->input('barang',[]);
+        $jumlah = $request->input('jumlah', []);
+        for ($barang=0; $barang < count($barangs); $barang++) {
+        if ($barangs[$barang] != '') {
+            $penjualan->barang()->attach($barangs[$barang], ['jumlah' => $jumlah[$barang]]);
+        }
+    }
     }
 
     /**
