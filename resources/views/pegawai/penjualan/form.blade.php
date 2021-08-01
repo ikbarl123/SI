@@ -26,7 +26,7 @@
                             <input type="text" name="nama_pembeli" class="form-control" id="formGroupExampleInput" >
                             @error('nama_pembeli')
                                 <h6 class="text-danger">{{ $message }}</h6>
-                            @enderror***
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Tanggal</label>
@@ -39,7 +39,8 @@
                             <label>Di isi Oleh</label>
                             <input type="text" name="username" value="{{Auth::user()->username}}" class="form-control" id="inlineFormInputGroup" readonly>
                         </div>
-                                    <table class="table" id="barang_table">
+                        <label>Detail</label>
+                        <table class="table" id="barang_table">
                             <thead>
                                 <tr>
                                     <th>Barang</th>
@@ -57,7 +58,7 @@
                                             </select>
                                     </td>
                                     <td>
-                                        <input type="number" name="jumlah[]" class="form-control" value="1" />
+                                        <input type="number" name="jumlah[]" onChange="HitungHarga()" class="form-control" value="1" />
                                     </td>
                                 </tr>
                                 <tr id="barang1"></tr>
@@ -70,17 +71,7 @@
                                 <button id='delete_row' class="pull-right btn btn-danger">- Delete Row</button>
                             </div>
                         </div>     
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Total Pembayaran</label>
-                                <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">Rp</div>
-                                    </div>
-                                    <input type="number" name="total_pembayaran" class="form-control" id="inlineFormInputGroup" readonly>
-                                </div>
-                            </div>
-                        </div>             
+                        <hr>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                     </div>
@@ -91,6 +82,10 @@
 @endsection
 @push('script')
 <script>
+async function HitungHarga() {
+			document.getElementById("lat").value=lat;      
+      		document.getElementById('lng').value=lng;    
+    }
 
  $(document).ready(function(){
     let row_number = 1;

@@ -35,19 +35,12 @@
                                 <td>{{$value->id_penjualan}}</td>
                                 <td>{{$value->nama_pembeli}}</td>
                                 <td>{{$value->tanggal}}</td>
-                                <td>Rp {{number_format($value->total_pembayaran,0,'','.')}}</td>
+                                <td>Rp {{number_format($value->jumlah_pembayaran,0,'','.')}}</td>
                                 <td>{{$value->username}}</td>
                                 <td>
                                     <div class="row">
-                                        <a href="{{route('penjualan.edit',$value->id_penjualan)}}"
-                                            class="btn btn-info btn-icon mr-1"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="{{route('penjualan.destroy',$value->id_penjualan)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                onClick="return confirm('Anda Yakin Ingin Menghapus Data Ini?')"
-                                                class="delete btn btn-danger btn-icon">
-                                                <i class="fas fa-trash"></i>
+                                        <a href="{{route('penjualan.show',$value->id_penjualan)}}"
+                                            class="btn btn-info btn-icon mr-1"><i class="fas fa-eye"></i></a>
                                             </button>
                                         </form>
                                     </div>

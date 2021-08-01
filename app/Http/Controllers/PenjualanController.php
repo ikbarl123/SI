@@ -38,14 +38,28 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
+        //fuck website
         $penjualan= penjualan::create($request->all());
         $barangs=$request->input('barang',[]);
         $jumlah = $request->input('jumlah', []);
+        $total=0;
+        //fucking for
         for ($barang=0; $barang < count($barangs); $barang++) {
         if ($barangs[$barang] != '') {
             $penjualan->barang()->attach($barangs[$barang], ['jumlah' => $jumlah[$barang]]);
         }
-    }
+    }  
+         //fuck variable
+        $update=penjualan::where('id_penjualan',$request->id_penjualan)->get();
+        foreach($penjualan->barang as $brg)
+        {
+            $biaya=($brg->harga)*($brg->pivot->jumlah);
+            $total=$total+$biaya;
+        }
+            $update=penjualan::where('id_penjualan',$request->id_penjualan)
+        ->update([
+            'jumlah_pembayaran'=>$total]);
+            return redirect()->route('penjualan.show',[$request->id_penjualan]);
     }
 
     /**
@@ -56,7 +70,9 @@ class PenjualanController extends Controller
      */
     public function show(penjualan $penjualan)
     {
-        //
+       $barang=barang::all();
+        return view('pegawai.penjualan.lihat',compact('penjualan','barang'));
+        
     }
 
     /**

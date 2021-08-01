@@ -18,7 +18,7 @@
                 <a href="{{ route('restok.index') }}" class="nav-link"><i class="fas fa-file-invoice "></i><span>Restok</span></a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('penjualan.index') }}" class="nav-link"><i class="fas fa-wallet"></i><span>Pembayaran</span></a>
+                <a href="{{ route('penjualan.index') }}" class="nav-link"><i class="fas fa-wallet"></i><span>Penjualan</span></a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
