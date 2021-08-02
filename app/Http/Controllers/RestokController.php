@@ -40,7 +40,7 @@ class restokController extends Controller
     public function store(Request $request)
     {
        restok::create([
-            'id_restok'=>$request->id_restok,
+            'id_restock'=>$request->id_restok,
             'id_barang'=>$request->id_barang,
             'nama_supplier'=>$request->nama_supplier,
             'tanggal'=>$request->tanggal,

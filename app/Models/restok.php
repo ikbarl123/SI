@@ -10,10 +10,10 @@ class restok extends Model
     use HasFactory;
     public $timestamps = false;
     public $incrementing = false;
-    protected $table = "restok";
-    protected $primaryKey = 'id_restok';
+    protected $table = "restock";
+    protected $primaryKey = 'id_restock';
     protected $fillable = [
-            'id_restok',
+            'id_restock',
             'id_barang',
             'nama_supplier',
             'tanggal',

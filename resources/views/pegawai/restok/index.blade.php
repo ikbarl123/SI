@@ -14,7 +14,7 @@
                     <p>{{ session('pesan') }}</p>
                 </div>
                 @endif
-                <a href="{{route('restok.create')}}" class="btn btn-primary float-right">Tambah restok</a>
+                <a href="{{route('restok.create')}}" class="btn btn-primary float-right mb-3">Tambah restok</a>
                 <div class="table-responsive">
                     <table class="table table-striped dataTable no-footer" id="table-1">
                         <thead>
@@ -43,9 +43,9 @@
                                 <td>{{$value->username}}</td>
                                 <td>
                                     <div class="row">
-                                        <a href="{{route('restok.edit',$value->id_restok)}}"
+                                        <a href="{{route('restok.edit',$value->id_restock)}}"
                                             class="btn btn-info btn-icon mr-1"><i class="fas fa-pencil-alt"></i></a>
-                                        <form action="{{route('restok.destroy',$value->id_restok)}}" method="post">
+                                        <form action="{{route('restok.destroy',$value->id_restock)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

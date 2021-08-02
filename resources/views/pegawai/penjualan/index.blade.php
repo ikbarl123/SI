@@ -14,7 +14,7 @@
                     <p>{{ session('pesan') }}</p>
                 </div>
                 @endif
-                <a href="{{route('penjualan.create')}}" class="btn btn-primary float-right">Tambah penjualan</a>
+                <a href="{{route('penjualan.create')}}" class="btn btn-primary float-right mb-3">Tambah penjualan</a>
                 <div class="table-responsive">
                     <table class="table table-striped dataTable no-footer" id="table-1">
                         <thead>

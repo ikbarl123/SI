@@ -51,10 +51,12 @@ class PenjualanController extends Controller
     }  
          //fuck variable
         $update=penjualan::where('id_penjualan',$request->id_penjualan)->get();
+        $kurangiBarang = new barang;
         foreach($penjualan->barang as $brg)
         {
             $biaya=($brg->harga)*($brg->pivot->jumlah);
             $total=$total+$biaya;
+            $kurangiBarang->kurangiStok($brg->id_barang,$brg->pivot->jumlah);
         }
             $update=penjualan::where('id_penjualan',$request->id_penjualan)
         ->update([

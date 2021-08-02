@@ -44,6 +44,7 @@
                             <thead>
                                 <tr>
                                     <th>Barang</th>
+                                    <!-- <th>Harga</th> -->
                                     <th>Jumlah</th>
                                 </tr>
                             </thead>
@@ -57,6 +58,7 @@
                                                 @endforeach 
                                             </select>
                                     </td>
+                                    <!-- <td>0</td> -->
                                     <td>
                                         <input type="number" name="jumlah[]" onChange="HitungHarga()" class="form-control" value="1" />
                                     </td>
@@ -67,10 +69,14 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button id="add_row" class="btn btn-default pull-left">+ Add Row</button>
+                                <button id="add_row" class="btn btn-info pull-left">+ Add Row</button>
                                 <button id='delete_row' class="pull-right btn btn-danger">- Delete Row</button>
                             </div>
-                        </div>     
+                        </div> 
+                        <!-- <div class="form-group mt-3">
+                            <label for="">Total Bayar</label>
+                            <input type="number" value="0" class="form-control">
+                        </div> -->    
                         <hr>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
@@ -82,9 +88,8 @@
 @endsection
 @push('script')
 <script>
-async function HitungHarga() {
-			document.getElementById("lat").value=lat;      
-      		document.getElementById('lng').value=lng;    
+function HitungHarga() {
+			console.log('tes');
     }
 
  $(document).ready(function(){
@@ -93,8 +98,9 @@ async function HitungHarga() {
       e.preventDefault();
       let new_row_number = row_number - 1;
       $('#barang' + row_number).html($('#barang' + new_row_number).html()).find('td:first-child');
-      $('#barangs_table').append('<tr id="barang' + (row_number + 1) + '"></tr>');
+      $('#barang_table').append('<tr id="barang' + (row_number + 1) + '"></tr>');
       row_number++;
+      console.log(row_number);
     });
 
     $("#delete_row").click(function(e){
